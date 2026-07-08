@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>ClickUp Helper Main Task Fixture</title>
+    <link rel="stylesheet" href="../../content.css">
+    <style>
+      body {
+        display: grid;
+        font-family: sans-serif;
+        grid-template-columns: 320px 1fr;
+        gap: 24px;
+      }
+
+      aside,
+      main {
+        border: 1px solid #ddd;
+        padding: 12px;
+      }
+
+      [data-chh-row] {
+        align-items: center;
+        border: 1px solid #ddd;
+        display: flex;
+        margin: 4px 0;
+        min-height: 28px;
+        padding: 4px 8px;
+      }
+
+      .children[hidden] { display: none; }
+      a { color: inherit; text-decoration: none; }
+      .cu-task-list { padding: 12px; }
+      .cu-task-row { border: 1px solid #aaa; display: block; padding: 10px; }
+    </style>
+  </head>
+  <body>
+    <aside data-testid="sidebar">
+      <div data-chh-row data-chh-kind="space" aria-expanded="true">Example Workspace</div>
+      <div data-chh-row data-chh-kind="folder" aria-expanded="false">
+        <button class="toggle" type="button" aria-expanded="false">›</button>
+        Example Project
+      </div>
+      <div class="children" hidden>
+        <a data-chh-row data-chh-kind="list" href="#project-tasks">Tasks</a>
+      </div>
+    </aside>
+
+    <main>
+      <section class="cu-task-list" data-test="list-view-divisions__task-list__to-do">
+        <a class="cu-task-row cu-task-row_list-view-v3"
+          data-test="task-list__task-row"
+          href="#task-detail">
+          Example task row
+        </a>
+      </section>
+    </main>
+
+    <script>
+      document.addEventListener("click", (event) => {
+        const toggle = event.target.closest(".toggle");
+        if (!toggle) return;
+        const folder = toggle.closest("[data-chh-kind='folder']");
+        const children = folder.nextElementSibling;
+        const expanded = folder.getAttribute("aria-expanded") === "true";
+        folder.setAttribute("aria-expanded", String(!expanded));
+        toggle.setAttribute("aria-expanded", String(!expanded));
+        children.hidden = expanded;
+      });
+    </script>
+    <script src="../../content.js"></script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+.chh-toast {
+  background: rgba(22, 24, 29, 0.94);
+  border-radius: 7px;
+  bottom: 18px;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.22);
+  color: #ffffff;
+  font: 500 12px/1.35 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  left: 18px;
+  max-width: 280px;
+  opacity: 0;
+  padding: 9px 11px;
+  pointer-events: none;
+  position: fixed;
+  transform: translateY(8px);
+  transition: opacity 150ms ease, transform 150ms ease;
+  z-index: 2147483647;
+}
+
+.chh-toast.chh-toast-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

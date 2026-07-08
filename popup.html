@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ClickUp Hierarchy Helper</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      body {
+        margin: 0;
+        min-width: 290px;
+        padding: 14px;
+      }
+
+      h1 {
+        font-size: 14px;
+        line-height: 1.2;
+        margin: 0 0 12px;
+      }
+
+      .setting {
+        align-items: flex-start;
+        display: flex;
+        gap: 10px;
+        margin: 12px 0;
+      }
+
+      .setting input {
+        margin-top: 2px;
+      }
+
+      .label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .hint {
+        color: color-mix(in srgb, currentColor 62%, transparent);
+        display: block;
+        font-size: 12px;
+        line-height: 1.35;
+        margin-top: 2px;
+      }
+
+      button {
+        background: #6b4eff;
+        border: 0;
+        border-radius: 6px;
+        color: #fff;
+        cursor: pointer;
+        font: 600 12px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        margin-top: 8px;
+        padding: 9px 10px;
+        width: 100%;
+      }
+
+      button:hover {
+        background: #593ee6;
+      }
+
+      .status {
+        color: color-mix(in srgb, currentColor 68%, transparent);
+        font-size: 12px;
+        min-height: 16px;
+        padding-top: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>ClickUp Hierarchy Helper</h1>
+
+    <label class="setting">
+      <input id="enabled" type="checkbox">
+      <span>
+        <span class="label">Enable helper</span>
+        <span class="hint">Use the folder and Space click shortcuts inside ClickUp.</span>
+      </span>
+    </label>
+
+    <label class="setting">
+      <input id="openFirstListOnCollapsedFolderClick" type="checkbox">
+      <span>
+        <span class="label">Open first list from folders</span>
+        <span class="hint">Folder row clicks jump straight to the first list.</span>
+      </span>
+    </label>
+
+    <button id="reset" type="button">Reset extension state</button>
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
